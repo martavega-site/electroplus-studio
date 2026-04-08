@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electroplus Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0c;
+      color: white;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), #0e0e0c),
+        url('https://images.unsplash.com/photo-1511379938547-c1f69419868d') center/cover;
+    }
+
+    h1 {
+      font-size: 64px;
+      margin: 0;
+    }
+
+    h2 {
+      font-weight: normal;
+      color: #aaa;
+    }
+
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 24px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 30px;
+    }
+
+    section {
+      padding: 80px 60px;
+      border-top: 1px solid #222;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #151515;
+      padding: 20px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>Electroplus</h1>
+    <h2>Production & Mixing by STEJOB</h2>
+    <a href="#contact" class="btn">Start a Project</a>
+  </div>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      Electroplus is a London-based production studio focused on indie, bedroom pop,
+      and alternative music. Built around analog textures, vintage gear, and emotional detail.
+    </p>
+  </section>
+
+  <section>
+    <h2>Services</h2>
+    <div class="services">
+      <div class="card">Production</div>
+      <div class="card">Mixing</div>
+      <div class="card">Song Development</div>
+      <div class="card">Remote Collaboration</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: your@email.com</p>
+  </section>
+
+</body>
+</html>
