@@ -1,154 +1,628 @@
-export default function ElectroplusStudioPage() {
-  const pillars = [
-    "Production",
-    "Mixing",
-    "Recording",
-    "Creative Direction",
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electroplus Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ece8de;
+      --panel: #f6f2ea;
+      --text: #111111;
+      --muted: rgba(17, 17, 17, 0.58);
+      --line: rgba(17, 17, 17, 0.11);
+      --line-strong: rgba(17, 17, 17, 0.2);
+      --black: #111111;
+    }
 
-  const formats = ["Music", "Films", "Series", "Artists"];
+    * { box-sizing: border-box; }
 
-  return (
-    <main className="min-h-screen bg-[#f4f1ea] text-[#111111] selection:bg-black selection:text-white">
-      <header className="border-b border-black/10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-8 lg:px-12">
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .shell {
+      width: min(1440px, calc(100% - 40px));
+      margin: 0 auto;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      min-height: 82px;
+      border-bottom: 1px solid var(--line);
+      padding: 0 28px;
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand-kicker,
+    .eyebrow,
+    .nav a,
+    .label,
+    .footer-note {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .brand-kicker,
+    .eyebrow,
+    .label,
+    .footer-note,
+    .nav a {
+      color: var(--muted);
+    }
+
+    .brand-title {
+      margin-top: 6px;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav a { transition: color 0.2s ease; }
+    .nav a:hover { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      min-height: calc(100vh - 82px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy,
+    .hero-media {
+      min-height: 760px;
+    }
+
+    .hero-copy {
+      padding: 42px 28px 34px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      max-width: 720px;
+    }
+
+    .eyebrow { margin-bottom: 30px; }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(64px, 11vw, 156px);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .hero-subcopy {
+      margin-top: 26px;
+      max-width: 460px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .button,
+    .button-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    .button {
+      background: var(--black);
+      color: #fff;
+      border: 1px solid var(--black);
+    }
+
+    .button:hover { opacity: 0.9; }
+
+    .button-outline {
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .button-outline:hover { background: rgba(17,17,17,0.04); }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--line);
+      margin-top: 42px;
+    }
+
+    .hero-meta .meta-cell {
+      padding: 18px 16px 0 0;
+    }
+
+    .hero-meta .meta-cell + .meta-cell {
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+    }
+
+    .meta-value {
+      margin-top: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 300;
+    }
+
+    .hero-media {
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .hero-media img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.54), rgba(0,0,0,0.08));
+    }
+
+    .media-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 24px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      color: #fff;
+    }
+
+    .media-city {
+      margin-top: 10px;
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section,
+    .cards,
+    .two-up,
+    .contact {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 0.34fr 0.66fr;
+      padding: 34px 28px 34px;
+      gap: 28px;
+    }
+
+    .intro {
+      max-width: 840px;
+      font-size: clamp(28px, 3.2vw, 48px);
+      line-height: 1.42;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+    }
+
+    .section-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .section-grid div {
+      background: var(--panel);
+      padding: 30px 24px;
+      min-height: 150px;
+    }
+
+    .section-grid strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .card {
+      background: var(--panel);
+      padding: 26px 24px 34px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .card-number {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card h3 {
+      margin: 74px 0 0;
+      font-size: 34px;
+      line-height: 1.02;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .card p {
+      margin: 20px 0 0;
+      max-width: 260px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 14px;
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .panel {
+      background: var(--panel);
+      padding: 34px 28px 40px;
+      min-height: 280px;
+    }
+
+    .panel-copy {
+      margin-top: 26px;
+      max-width: 540px;
+      font-size: clamp(28px, 2.8vw, 44px);
+      line-height: 1.2;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .panel p:last-child {
+      margin-top: 26px;
+      max-width: 550px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .contact-left,
+    .contact-right {
+      background: var(--panel);
+      padding: 34px 28px 42px;
+    }
+
+    .contact-title {
+      margin-top: 24px;
+      max-width: 760px;
+      font-size: clamp(44px, 6vw, 88px);
+      line-height: 0.95;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 28px 24px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .section,
+      .contact,
+      .two-up {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-copy,
+      .hero-media {
+        min-height: auto;
+      }
+
+      .hero-media {
+        min-height: 580px;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .shell {
+        width: min(100%, calc(100% - 18px));
+      }
+
+      .topbar,
+      .hero-copy,
+      .section,
+      .panel,
+      .contact-left,
+      .contact-right,
+      .footer {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero-meta,
+      .section-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta .meta-cell + .meta-cell {
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+
+      .card h3 {
+        margin-top: 42px;
+      }
+
+      .media-caption {
+        left: 18px;
+        right: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <div class="brand-kicker">Electroplus</div>
+        <div class="brand-title">Studio</div>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-text">
+          <div class="eyebrow">Production & Mixing by STEJOB</div>
+          <h1>Electroplus</h1>
+          <div class="hero-subcopy">
+            A stripped-back production house for artists who want records with atmosphere, precision, texture, and restraint.
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Start a Project</a>
+            <a class="button-outline" href="#about">View Studio</a>
+          </div>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-cell">
+            <div class="label">Focus</div>
+            <div class="meta-value">Music / Film / Series</div>
+          </div>
+          <div class="meta-cell">
+            <div class="label">Base</div>
+            <div class="meta-value">London, UK</div>
+          </div>
+          <div class="meta-cell">
+            <div class="label">Work</div>
+            <div class="meta-value">Production / Mixing / Recording</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=80" alt="Studio space" />
+        <div class="media-caption">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/50">Electroplus</p>
-            <h1 className="mt-1 text-lg font-medium tracking-[0.18em] uppercase">Studio</h1>
+            <div class="label" style="color: rgba(255,255,255,0.7);">Studio</div>
+            <div class="media-city">London</div>
           </div>
-          <nav className="hidden gap-8 text-[11px] uppercase tracking-[0.28em] text-black/60 md:flex">
-            <a href="#about" className="transition hover:text-black">About</a>
-            <a href="#services" className="transition hover:text-black">Services</a>
-            <a href="#contact" className="transition hover:text-black">Contact</a>
-          </nav>
+          <div class="footer-note" style="color: rgba(255,255,255,0.7);">Available Worldwide</div>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <section className="mx-auto grid min-h-[88vh] max-w-7xl items-stretch border-x border-black/10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="flex flex-col justify-between border-b border-black/10 p-6 sm:p-8 lg:border-b-0 lg:border-r lg:border-black/10 lg:p-12">
+    <section id="about" class="section">
+      <div class="label">About</div>
+      <div>
+        <div class="intro">
+          Electroplus develops intimate, elevated records for indie and alternative artists, combining clean modern structure with tactile analog character.
+        </div>
+
+        <div class="section-grid">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">Production & Mixing by STEJOB</p>
-            <h2 className="mt-8 max-w-4xl text-5xl font-light uppercase leading-[0.9] tracking-[-0.04em] sm:text-7xl lg:text-[7.5rem]">
-              Electroplus
-            </h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-black/65 sm:text-base">
-              A modern production house for artists who want records with atmosphere, detail, restraint, and impact.
-            </p>
+            <div class="label">Format</div>
+            <strong>Music</strong>
           </div>
-
-          <div className="mt-12 flex flex-wrap gap-3">
-            <a
-              href="#contact"
-              className="rounded-full border border-black/15 bg-black px-6 py-3 text-[11px] uppercase tracking-[0.26em] text-white transition hover:opacity-90"
-            >
-              Start a Project
-            </a>
-            <a
-              href="#about"
-              className="rounded-full border border-black/15 px-6 py-3 text-[11px] uppercase tracking-[0.26em] text-black transition hover:bg-black/5"
-            >
-              View Studio
-            </a>
-          </div>
-        </div>
-
-        <div className="relative min-h-[420px] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=80"
-            alt="Studio interior"
-            className="absolute inset-0 h-full w-full object-cover grayscale"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between border-t border-white/20 bg-gradient-to-t from-black/70 to-transparent p-6 text-white sm:p-8 lg:p-10">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.35em] text-white/70">Studio</p>
-              <p className="mt-2 text-2xl font-light uppercase tracking-[0.08em]">London</p>
-            </div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/70">Available Worldwide</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="mx-auto max-w-7xl border-x border-b border-black/10 px-6 py-16 sm:px-8 lg:px-12 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">About</p>
+            <div class="label">Format</div>
+            <strong>Films</strong>
           </div>
-          <div className="grid gap-10">
-            <p className="max-w-3xl text-2xl font-light leading-[1.5] text-black/85 sm:text-3xl">
-              Electroplus creates intimate, elevated records for indie and alternative artists, blending clean modern structure with tactile analog character.
-            </p>
-            <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-2">
-              {formats.map((item) => (
-                <div key={item} className="bg-[#f4f1ea] p-6 sm:p-8">
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-black/45">Format</p>
-                  <p className="mt-4 text-3xl font-light uppercase tracking-[0.06em]">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="mx-auto max-w-7xl border-x border-b border-black/10">
-        <div className="grid gap-px bg-black/10 lg:grid-cols-4">
-          {pillars.map((item, index) => (
-            <article key={item} className="bg-[#f4f1ea] p-6 sm:p-8 lg:p-10">
-              <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">0{index + 1}</p>
-              <h3 className="mt-10 text-3xl font-light uppercase tracking-[0.05em]">{item}</h3>
-              <p className="mt-5 text-sm leading-7 text-black/65">
-                Tailored for artists, labels, and projects that need taste, precision, and a strong sonic identity.
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl border-x border-b border-black/10 px-6 py-16 sm:px-8 lg:px-12 lg:py-24">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
-          <div className="border border-black/10 p-6 sm:p-8 lg:p-10">
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">Approach</p>
-            <p className="mt-6 max-w-xl text-3xl font-light uppercase leading-[1.15] tracking-[0.02em]">
-              Clean structure. Human texture. Lasting sound.
-            </p>
-          </div>
-          <div className="border border-black/10 p-6 sm:p-8 lg:p-10">
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">Studio Notes</p>
-            <p className="mt-6 text-sm leading-8 text-black/65">
-              Built for singles, EPs, albums, vocal production, revisions, and remote collaboration. Every project is shaped around the artist, not pushed into a template.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="mx-auto max-w-7xl border-x border-b border-black/10 px-6 py-16 sm:px-8 lg:px-12 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-black/45">Contact</p>
-            <h3 className="mt-6 max-w-2xl text-4xl font-light uppercase leading-[1] tracking-[-0.03em] sm:text-6xl">
-              Let’s build the record properly.
-            </h3>
+            <div class="label">Format</div>
+            <strong>Series</strong>
           </div>
-
-          <div className="border border-black/10 p-6 sm:p-8 lg:p-10">
-            <div className="grid gap-5 text-sm text-black/70">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.3em] text-black/45">Email</p>
-                <p className="mt-2">info@electroplusstudio.com</p>
-              </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.3em] text-black/45">Location</p>
-                <p className="mt-2">London, UK</p>
-              </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.3em] text-black/45">Services</p>
-                <p className="mt-2">Production · Mixing · Recording · Development</p>
-              </div>
-            </div>
+          <div>
+            <div class="label">Format</div>
+            <strong>Artists</strong>
           </div>
         </div>
-      </section>
-    </main>
-  );
-}
+      </div>
+    </section>
 
+    <section id="services" class="cards">
+      <article class="card">
+        <div class="card-number">01</div>
+        <h3>Production</h3>
+        <p>Song-first development with direction, arrangement, tone shaping, and final record vision.</p>
+      </article>
+      <article class="card">
+        <div class="card-number">02</div>
+        <h3>Mixing</h3>
+        <p>Detailed, spacious mixes with warmth, control, and a strong emotional center.</p>
+      </article>
+      <article class="card">
+        <div class="card-number">03</div>
+        <h3>Recording</h3>
+        <p>Vocals, overdubs, edits, texture, and performance capture tailored to the project.</p>
+      </article>
+      <article class="card">
+        <div class="card-number">04</div>
+        <h3>Direction</h3>
+        <p>Creative support for artists who need refinement, taste, focus, and finish.</p>
+      </article>
+    </section>
+
+    <section class="two-up">
+      <div class="panel">
+        <div class="label">Approach</div>
+        <div class="panel-copy">Clean structure. Human texture. Lasting sound.</div>
+      </div>
+      <div class="panel">
+        <div class="label">Studio Notes</div>
+        <p>Built for singles, EPs, albums, vocal production, revisions, and remote collaboration. Every project is shaped around the artist rather than forced into a template.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-left">
+        <div class="label">Contact</div>
+        <div class="contact-title">Let’s build the record properly.</div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <strong>info@electroplusstudio.com</strong>
+          </div>
+          <div class="contact-item">
+            <div class="label">Location</div>
+            <strong>London, UK</strong>
+          </div>
+          <div class="contact-item">
+            <div class="label">Services</div>
+            <strong>Production · Mixing · Recording · Development</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-note">Electroplus Studio</div>
+      <div class="footer-note">Production & Mixing by STEJOB</div>
+    </footer>
+  </div>
+</body>
+</html>
