@@ -98,7 +98,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
+      grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
       min-height: calc(100vh - 82px);
       border-bottom: 1px solid var(--line);
     }
@@ -117,16 +117,19 @@
     }
 
     .hero-text {
-      max-width: 720px;
+      max-width: 640px;
     }
 
     .eyebrow { margin-bottom: 30px; }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(64px, 11vw, 156px);
+      font-size: clamp(58px, 8.5vw, 126px);
       line-height: 0.9;
-      letter-spacing: -0.075em;
+      letter-spacing: -0.06em;
+      max-width: 6.2ch;
+      position: relative;
+      z-index: 1;
       text-transform: uppercase;
       font-weight: 300;
     }
@@ -498,7 +501,7 @@
           <div class="eyebrow">Production & Mixing by STEJOB</div>
           <h1>Electroplus</h1>
           <div class="hero-subcopy">
-            A stripped-back production house for artists who want records with atmosphere, precision, texture, and restraint.
+            Production, recording, mixing, and mastering shaped with old-school and modern techniques for music that feels honest, atmospheric, and built to last.
           </div>
           <div class="hero-actions">
             <a class="button" href="#contact">Start a Project</a>
@@ -509,15 +512,15 @@
         <div class="hero-meta">
           <div class="meta-cell">
             <div class="label">Focus</div>
-            <div class="meta-value">Music / Film / Series</div>
+            <div class="meta-value">Production / Recording / Mixing</div>
           </div>
           <div class="meta-cell">
             <div class="label">Base</div>
-            <div class="meta-value">London, UK</div>
+            <div class="meta-value">London / Stockholm</div>
           </div>
           <div class="meta-cell">
-            <div class="label">Work</div>
-            <div class="meta-value">Production / Mixing / Recording</div>
+            <div class="label">Engineer</div>
+            <div class="meta-value">STEJOB</div>
           </div>
         </div>
       </div>
@@ -538,25 +541,25 @@
       <div class="label">About</div>
       <div>
         <div class="intro">
-          Electroplus develops intimate, elevated records for indie and alternative artists, combining clean modern structure with tactile analog character.
+          Electroplus began in 2000 and grew from an electronics repair shop into a recording and production studio, combining old-school and modern techniques to create honest, heartfelt records.
         </div>
 
         <div class="section-grid">
           <div>
-            <div class="label">Format</div>
-            <strong>Music</strong>
+            <div class="label">Studio A</div>
+            <strong>Squarehead</strong>
           </div>
           <div>
-            <div class="label">Format</div>
-            <strong>Films</strong>
+            <div class="label">Studio B</div>
+            <strong>Electroplus HQ</strong>
           </div>
           <div>
-            <div class="label">Format</div>
-            <strong>Series</strong>
+            <div class="label">Location</div>
+            <strong>London, UK</strong>
           </div>
           <div>
-            <div class="label">Format</div>
-            <strong>Artists</strong>
+            <div class="label">Location</div>
+            <strong>Stockholm, Sweden</strong>
           </div>
         </div>
       </div>
@@ -566,33 +569,45 @@
       <article class="card">
         <div class="card-number">01</div>
         <h3>Production</h3>
-        <p>Song-first development with direction, arrangement, tone shaping, and final record vision.</p>
+        <p>Song-first production and arrangement with a clear artistic direction and a finished-record mindset.</p>
       </article>
       <article class="card">
         <div class="card-number">02</div>
         <h3>Mixing</h3>
-        <p>Detailed, spacious mixes with warmth, control, and a strong emotional center.</p>
+        <p>Detailed mixing and mastering with warmth, control, and a strong emotional center.</p>
       </article>
       <article class="card">
         <div class="card-number">03</div>
         <h3>Recording</h3>
-        <p>Vocals, overdubs, edits, texture, and performance capture tailored to the project.</p>
+        <p>Recording sessions, overdubs, vocal capture, and edits shaped around the needs of each project.</p>
       </article>
       <article class="card">
         <div class="card-number">04</div>
         <h3>Direction</h3>
-        <p>Creative support for artists who need refinement, taste, focus, and finish.</p>
+        <p>Creative direction for artists who need refinement, taste, focus, and a cohesive sonic identity.</p>
       </article>
     </section>
 
     <section class="two-up">
       <div class="panel">
         <div class="label">Approach</div>
-        <div class="panel-copy">Clean structure. Human texture. Lasting sound.</div>
+        <div class="panel-copy">Old-school methods. Modern finish. Honest records.</div>
       </div>
       <div class="panel">
         <div class="label">Studio Notes</div>
-        <p>Built for singles, EPs, albums, vocal production, revisions, and remote collaboration. Every project is shaped around the artist rather than forced into a template.</p>
+        <p>Studio A in London features a live room, configurable layout, outboard gear, NS10 and Focal monitors, and Otari 1/4 inch tape. Studio B in Stockholm is a writing, production, and mix suite with a Neumann U87, vintage guitars and amps, UAD, Neve, DBX, Juno 106, and vintage synths.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="label">Selected Platforms</div>
+      <div>
+        <div class="section-grid">
+          <div><img src="https://electroplusstudio.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdrdc2gsgu%2Fimage%2Fupload%2Fb_transparent%2Cc_fit%2Ch_100%2Cw_100%2Fbbc-introducing-logo%3F_a%3DBAMABkeA0&w=256" alt="BBC Introducing" style="width:140px;height:56px;object-fit:contain;filter:grayscale(100%);opacity:0.9;"><strong style="font-size:20px;letter-spacing:0.04em;margin-top:18px;">BBC Introducing</strong></div>
+          <div><img src="https://electroplusstudio.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdrdc2gsgu%2Fimage%2Fupload%2Fb_transparent%2Cc_fit%2Ch_100%2Cw_100%2Fvogue-scandinavia-logo%3F_a%3DBAMABkeA0&w=256" alt="Vogue Scandinavia" style="width:140px;height:56px;object-fit:contain;filter:grayscale(100%);opacity:0.9;"><strong style="font-size:20px;letter-spacing:0.04em;margin-top:18px;">Vogue Scandinavia</strong></div>
+          <div><img src="https://electroplusstudio.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdrdc2gsgu%2Fimage%2Fupload%2Fb_transparent%2Cc_fit%2Ch_100%2Cw_100%2Fiheart-radio-logo%3F_a%3DBAMABkeA0&w=256" alt="iHeartRadio" style="width:140px;height:56px;object-fit:contain;filter:grayscale(100%);opacity:0.9;"><strong style="font-size:20px;letter-spacing:0.04em;margin-top:18px;">iHeartRadio</strong></div>
+          <div><img src="https://electroplusstudio.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdrdc2gsgu%2Fimage%2Fupload%2Fb_transparent%2Cc_fit%2Ch_100%2Cw_100%2FBIFALOGO_yrktri%3F_a%3DBAMABkeA0&w=256" alt="British Independent Film Awards" style="width:140px;height:56px;object-fit:contain;filter:grayscale(100%);opacity:0.9;"><strong style="font-size:20px;letter-spacing:0.04em;margin-top:18px;">BIFA</strong></div>
+        </div>
       </div>
     </section>
 
@@ -605,15 +620,15 @@
         <div class="contact-list">
           <div class="contact-item">
             <div class="label">Email</div>
-            <strong>info@electroplusstudio.com</strong>
+            <strong>electroplusrecordingstudios@gmail.com</strong>
           </div>
           <div class="contact-item">
             <div class="label">Location</div>
-            <strong>London, UK</strong>
+            <strong>London, UK / Stockholm, Sweden</strong>
           </div>
           <div class="contact-item">
             <div class="label">Services</div>
-            <strong>Production · Mixing · Recording · Development</strong>
+            <strong>Production · Recording · Mixing & Mastering</strong>
           </div>
         </div>
       </div>
