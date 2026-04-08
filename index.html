@@ -98,7 +98,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
+      grid-template-columns: minmax(0, 58%) minmax(0, 42%);
       min-height: calc(100vh - 82px);
       border-bottom: 1px solid var(--line);
     }
@@ -109,29 +109,34 @@
     }
 
     .hero-copy {
-      padding: 42px 28px 34px;
+      padding: 42px 40px 34px 28px;
       border-right: 1px solid var(--line);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow: hidden;
+      min-width: 0;
     }
 
     .hero-text {
-      max-width: 640px;
+      max-width: 620px;
+      min-width: 0;
     }
 
     .eyebrow { margin-bottom: 30px; }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(58px, 8.5vw, 126px);
+      font-size: clamp(52px, 7.2vw, 104px);
       line-height: 0.9;
-      letter-spacing: -0.06em;
-      max-width: 6.2ch;
-      position: relative;
-      z-index: 1;
+      letter-spacing: -0.055em;
       text-transform: uppercase;
       font-weight: 300;
+      max-width: 5.8ch;
+      position: relative;
+      z-index: 1;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     .hero-subcopy {
@@ -216,6 +221,7 @@
       inset: 0;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       filter: grayscale(100%);
     }
 
@@ -432,6 +438,11 @@
         min-height: auto;
       }
 
+      .hero h1 {
+        max-width: none;
+        font-size: clamp(52px, 14vw, 92px);
+      }
+
       .hero-media {
         min-height: 580px;
       }
@@ -499,7 +510,7 @@
       <div class="hero-copy">
         <div class="hero-text">
           <div class="eyebrow">Production & Mixing by STEJOB</div>
-          <h1>Electroplus</h1>
+          <h1><span style="display:block;">Electro</span><span style="display:block;">plus</span></h1>
           <div class="hero-subcopy">
             Production, recording, mixing, and mastering shaped with old-school and modern techniques for music that feels honest, atmospheric, and built to last.
           </div>
@@ -526,7 +537,7 @@
       </div>
 
       <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=80" alt="Studio space" />
+        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1600&q=80" alt="Studio space" />
         <div class="media-caption">
           <div>
             <div class="label" style="color: rgba(255,255,255,0.7);">Studio</div>
@@ -555,7 +566,7 @@
           </div>
           <div>
             <div class="label">Location</div>
-            <strong>London, UK</strong>
+            <strong>London, UK / Stockholm, Sweden</strong>
           </div>
           <div>
             <div class="label">Location</div>
@@ -624,7 +635,7 @@
           </div>
           <div class="contact-item">
             <div class="label">Location</div>
-            <strong>London, UK / Stockholm, Sweden</strong>
+            <strong>London, UK</strong>
           </div>
           <div class="contact-item">
             <div class="label">Services</div>
