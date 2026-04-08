@@ -236,6 +236,7 @@
     .cards,
     .two-up,
     .gallery,
+    .tour,
     .spotify,
     .contact,
     .platforms {
@@ -394,8 +395,145 @@
       background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.08));
     }
 
+    .tour,
     .platforms {
       padding: 28px 22px;
+    }
+
+    .tour-head {
+      display: grid;
+      grid-template-columns: 0.32fr 0.68fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .tour-intro {
+      font-size: clamp(26px, 2.6vw, 40px);
+      line-height: 1.2;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      max-width: 760px;
+    }
+
+    .tour-shell {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .tour-tabs {
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .tour-tab {
+      appearance: none;
+      border: 0;
+      background: var(--panel);
+      color: var(--muted);
+      padding: 16px 18px;
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .tour-tab.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .tour-panels {
+      position: relative;
+    }
+
+    .tour-panel {
+      display: none;
+    }
+
+    .tour-panel.active {
+      display: block;
+    }
+
+    .tour-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .tour-visual,
+    .tour-copy {
+      background: var(--panel);
+    }
+
+    .tour-visual {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .tour-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .tour-zoom {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .tour-copy {
+      padding: 28px 22px;
+    }
+
+    .tour-copy h3 {
+      margin: 12px 0 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
+
+    .tour-copy p {
+      margin: 18px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .tour-copy ul {
+      margin: 20px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .tour-note {
+      padding: 16px 18px 18px;
+      border-top: 1px solid var(--line);
     }
 
     .platform-grid {
@@ -484,6 +622,19 @@
     }
 
     @media (max-width: 1100px) {
+      .tour-head,
+      .tour-grid,
+      .hero,
+      .section,
+      .two-up,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .tour-visual {
+        min-height: 360px;
+      }
+
       .hero,
       .section,
       .two-up,
@@ -501,6 +652,12 @@
     }
 
     @media (max-width: 740px) {
+      .tour,
+      .platforms,
+      .spotify,
+      .gallery,
+      .section { padding-left: 16px; padding-right: 16px; }
+
       .shell { width: min(100%, calc(100% - 12px)); }
       .topbar,
       .hero-copy,
@@ -570,6 +727,9 @@
       .media-caption { left: 16px; right: 16px; bottom: 16px; }
       .media-caption .city { font-size: 22px; }
       .spotify iframe { min-height: 380px; }
+      .tour-tab { width: 100%; text-align: left; }
+      .tour-copy h3 { font-size: clamp(30px, 10vw, 42px); }
+      .tour-visual { min-height: 280px; }
 
       .contact-title {
         font-size: clamp(34px, 11vw, 52px);
@@ -710,6 +870,63 @@
       </div>
     </section>
 
+    <section id="tour" class="tour">
+      <div class="tour-head">
+        <div class="tiny">Studio Tour</div>
+        <div class="tour-intro">Explore both Electroplus spaces through an interactive studio overview.</div>
+      </div>
+      <div class="tour-shell">
+        <div class="tour-tabs" role="tablist" aria-label="Studio tour tabs">
+          <button class="tour-tab active" data-tour="london" role="tab" aria-selected="true">London / Studio A</button>
+          <button class="tour-tab" data-tour="stockholm" role="tab" aria-selected="false">Stockholm / Studio B</button>
+        </div>
+
+        <div class="tour-panels">
+          <div class="tour-panel active" data-panel="london">
+            <div class="tour-grid">
+              <div class="tour-visual">
+                <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1600&q=80" alt="London studio room" />
+                <button class="tour-zoom" data-image="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1600&q=80" data-caption="Studio A / Squarehead / London">Open image</button>
+              </div>
+              <div class="tour-copy">
+                <div class="tiny">Studio A / Squarehead</div>
+                <h3>London</h3>
+                <p>Beautiful sounding live room with a highly configurable layout, a control room with plenty of outboard gear, and a setup designed for recording bands, solo artists, and voice sessions.</p>
+                <ul>
+                  <li>AML Neve microphone preamplifiers</li>
+                  <li>API, Focusrite, Distressor, Avalon, 1176, Neve, SSL, DBX</li>
+                  <li>NS10 and Focal monitors</li>
+                  <li>Otari 1/4 inch and large drums & keys collection</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-panel" data-panel="stockholm">
+            <div class="tour-grid">
+              <div class="tour-visual">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1600&q=80" alt="Stockholm production suite" />
+                <button class="tour-zoom" data-image="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1600&q=80" data-caption="Studio B / Electroplus HQ / Stockholm">Open image</button>
+              </div>
+              <div class="tour-copy">
+                <div class="tiny">Studio B / Electroplus HQ</div>
+                <h3>Stockholm</h3>
+                <p>Writing, production, and mix suite designed as the ideal place to start or finish a record, built around a compact but character-rich setup for modern production work.</p>
+                <ul>
+                  <li>Neumann U87</li>
+                  <li>Vintage guitars & amps</li>
+                  <li>UAD, Neve, DBX</li>
+                  <li>Juno 106 and vintage synths</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tour-note tiny">No public 360° embed was available to include, so this section is set up as an interactive studio overview and can be swapped to a real 360 tour later.</div>
+      </div>
+    </section>
+
     <section class="platforms">
       <div class="tiny">Selected Platforms</div>
       <div class="platform-grid">
@@ -767,6 +984,100 @@
       <div class="tiny">Production · Recording · Mixing & Mastering</div>
     </footer>
   </div>
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImage" src="" alt="Expanded studio image" />
+      <figcaption id="lightboxCaption" class="tiny" style="color: rgba(255,255,255,0.8);"></figcaption>
+    </figure>
+  </div>
+
+  <style>
+    .lightbox[hidden] { display: none; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox-figure {
+      margin: 0;
+      max-width: min(1100px, 100%);
+      width: 100%;
+    }
+    .lightbox-figure img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .lightbox-figure figcaption {
+      margin-top: 12px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    const tourTabs = document.querySelectorAll('.tour-tab');
+    const tourPanels = document.querySelectorAll('.tour-panel');
+
+    tourTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tour;
+        tourTabs.forEach((item) => {
+          item.classList.toggle('active', item === tab);
+          item.setAttribute('aria-selected', item === tab ? 'true' : 'false');
+        });
+        tourPanels.forEach((panel) => {
+          panel.classList.toggle('active', panel.dataset.panel === target);
+        });
+      });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.tour-zoom').forEach((button) => {
+      button.addEventListener('click', () => {
+        lightboxImage.src = button.dataset.image;
+        lightboxCaption.textContent = button.dataset.caption || '';
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  </script>
 </body>
 </html>
 
